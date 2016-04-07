@@ -17,3 +17,14 @@ chart: {
     }
 },
 ```
+修改步数位置偏移的问题
+```js
+positioner: function (boxWidth, boxHeight, point) {
+    var x = point.plotX;
+    var y = 35;
+    if((boxWidth - x) > 0 && boxWidth - x < 16) {
+      x = x - 16;
+    }
+    return { x: x, y: y };
+}
+```

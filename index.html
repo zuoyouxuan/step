@@ -171,7 +171,7 @@
             xAxis: {
                 tickLength: 0,
                 tickWidth: 0,
-                lineColor: 'rgba(255,255,255,0)',
+                lineColor: 'transparent',
                 categories: ['4月1', '2', '3', '4', '5', '6', '7'],
                 labels: {
                     style: {"color": "#FFFFFF", opacity: 0.65}
@@ -181,7 +181,8 @@
                 name: '',
                 showInLegend: false,
                 color: '#FFFFFF',
-                data: [25315, 1230, 15250, 1510, 9150, 8171, 29824]
+                lineWidth:2,
+                data: [25315, 0, 0, 0, 9150, 8171, 29824]
             }]
 
         }, function (chart) { // on complete
