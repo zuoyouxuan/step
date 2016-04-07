@@ -74,7 +74,7 @@
 #[[
 <script>
 
-    var targetStep = 5000;//目标步数
+    var targetStep = 10000;//目标步数
 
     $(function () {
 
@@ -97,10 +97,8 @@
                 align: 'left'
             },
             chart: {
-                marginLeft:5,
-                marginRight:10,
-                // spacingLeft: 5,
-                // // spacingRight: -5,
+                marginRight:20,
+                spacingRight: -5,
                 borderRadius: 10,
                 renderTo: 'chartContainer',
                 spacingBottom: 70,
@@ -140,7 +138,7 @@
             },
             yAxis: {
                 min: 1000,
-                offset: -100,
+                offset: -15,
                 title: null,
                 opposite: true,
                 showFirstLabel: false,
@@ -183,7 +181,7 @@
                 name: '',
                 showInLegend: false,
                 color: '#FFFFFF',
-                data: [45315, 1230, 15250, 1510, 9150, 8171, 29824]
+                data: [25315, 1230, 15250, 1510, 9150, 8171, 29824]
             }]
 
         }, function (chart) { // on complete
