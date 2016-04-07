@@ -1,3 +1,21 @@
+#2016-04-07 17:00
+圆环位置偏移问题
+```css
+#topLoader {
+    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    z-index: 999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);    /* 50%为自身尺寸的一半 */
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform:translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+}
+```
 #2016-04-07 15：30
 修改曲线宽度；修改圆点半径
 ```js

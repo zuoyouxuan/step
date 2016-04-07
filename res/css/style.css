@@ -95,9 +95,12 @@ html, body {
     position: absolute;
     z-index: 999;
     left: 50%;
-    left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);    /* 50%为自身尺寸的一半 */
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform:translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
 }
 
 
