@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="res/js/iscroll-lite.min.js"></script>
+    <link rel="stylesheet" href="res/js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="res/css/style.css">
+    <script src="res/js/highcharts.min.js"></script>
+    <style>
+        .full {
+            background: url('res/image/bg.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+        }
+
+
+    </style>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded() {
+            myScroll = new iScroll(document.getElementById('main'), {scrollbars: false});
+        }
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+        }, false);
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(loaded, 200);
+        }, false);
+        document.addEventListener('DOMContentLoaded', loaded, false);
+        window.addEventListener('load', setTimeout(function () {
+            loaded();
+        }, 200), false);
+    </script>
+</head>
+<body class="full" onload="loaded()">
+<div id="main" class="mainContent text-center">
+    <div class="container" id="scroller">
+        <div class="row" style="margin-top:-40px">
+            <div class="col-xs-12">
+                <img class="avatar  text-center" src="res/image/avatar.jpg"/>
+            </div>
+        </div>
+
+        <div class="standard-space container" style="padding-left: 5px;padding-right: 5px">
+            <div id="chartContainer" class="col-xs-12"
+                 style="min-height:200px;padding-right: 5px;padding-left: 5px"></div>
+            <!--<canvas id="stepsCanvas"></canvas>-->
+        </div>
+        <div class="row clearfix text-center" id="ctrBtns">
+            <div class="col-xs-12">
+                <div id="topLoader" class="text-center"></div>
+                <div class="btn-group  text-center" role="group">
+                    <button class="btn btn-lg btn-default button_ctr btn-left" id="leftBtn">
+                        活动说明&nbsp;&nbsp;</button>
+                    <button class="btn btn-lg btn-default button_ctr btn-right" id="animateButton">
+                        已获得奖励
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/bootstrap/js/bootstrap.min.js"></script>
+<script src="res/js/jquery.progress.min.js"></script>
+
+#[[
+<script>
+
+    var targetStep = 5000;//目标步数
+
+    $(function () {
+
+        var curHeight = $(window).height();
+        var chartHeight = 200;
+        if (curHeight <= 568) {
+            chartHeight = 200;
+        } else if (curHeight <= 627) {
+            chartHeight = 240;
+        } else {
+            chartHeight = 280;
+        }
+        $('#chartContainer').css({'height': chartHeight});
+
+
+        var chart = new Highcharts.Chart({
+            title: {
+                useHTML: true,
+                text: '<div class="lhsTitle">步数</div><div class="rhsTitle">80000</div>',
+                align: 'left'
+            },
+            chart: {
+                marginLeft:5,
+                marginRight:10,
+                // spacingLeft: 5,
+                // // spacingRight: -5,
+                borderRadius: 10,
+                renderTo: 'chartContainer',
+                spacingBottom: 70,
+                type: 'area',
+                backgroundColor: {
+                    linearGradient: [0, 0, $(window).width(), chartHeight],
+                    stops: [
+                        [0, '#1abe81'],
+                        [1, '#1896a2']
+                    ]
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return this.y;
+                },
+                borderWidth: 0,
+                shadow: false,
+                backgroundColor:"transparent",
+                style: {
+                   "color": "#FFFFFF",
+                   "opacity": 0.85
+                },
+                positioner: function (boxWidth, boxHeight, point) {
+                    var x = point.plotX;
+                    var y = 35;
+                    if((boxWidth - x) > 0 && boxWidth - x < 16) {
+                      x = x - 16;
+                    }
+                    return { x: x, y: y };
+                }
+            },
+            plotOptions: {
+                series: {
+                    fillOpacity: 0.1
+                }
+            },
+            yAxis: {
+                min: 1000,
+                offset: -100,
+                title: null,
+                opposite: true,
+                showFirstLabel: false,
+                showLastLabel: false,
+                gridLineDashStyle: 'Dot',
+                labels: {
+                    formatter: function () {
+                        if(this.value < 1000) {
+                          return this.value;
+                        } else if(this.value < 10000) {
+                          return this.value/1000 + 'K';
+                        }
+                        return this.value / 10000 + 'W';
+                    },
+                    style: {"color": "#FFFFFF", "font-size": "10px", opacity: 0.65}
+                },
+                tickPositioner: function (min , max) {
+                    var positions = [];
+                    positions.push(0);
+                    if(max < targetStep) {
+                      positions.push(targetStep);
+                      positions.push(targetStep + 100);
+                    } else {
+                      positions.push(targetStep);
+                      positions.push(max);
+                    }
+                    return positions;
+                }
+            },
+            xAxis: {
+                tickLength: 0,
+                tickWidth: 0,
+                lineColor: 'rgba(255,255,255,0)',
+                categories: ['4月1', '2', '3', '4', '5', '6', '7'],
+                labels: {
+                    style: {"color": "#FFFFFF", opacity: 0.65}
+                }
+            },
+            series: [{
+                name: '',
+                showInLegend: false,
+                color: '#FFFFFF',
+                data: [45315, 1230, 15250, 1510, 9150, 8171, 29824]
+            }]
+
+        }, function (chart) { // on complete
+            var labelY = 220;
+            if (curHeight <= 568) {
+                labelY = 180;
+            } else if (curHeight <= 627) {
+                labelY = 220;
+            } else {
+                labelY = 260;
+            }
+
+            chart.renderer.path(['M', 5, labelY - 35, 'h', chart.chartWidth - 10, 0])
+                    .attr({
+                        'stroke-width': 1,
+                        stroke: 'rgba(255,255,255,0.15)',
+                        id: 'vert'
+                    })
+                    .add();
+
+            var group = chart.renderer.g().on('click', function () {
+                location.href = 'http://www.baidu.com'
+            }).css({cursor: 'Pointer'}).add();
+
+            chart.renderer.label('<img src="res/image/avatar.jpg"/>', 10, labelY - 60 / 2, null, null, null, true)
+                    .add(group);
+
+            chart.renderer.text('夺得04月01日排行榜冠军', 60, labelY)
+                    .css({
+                        "color": "#FFFFFF", opacity: 0.65,
+                        fontSize: '14px'
+                    })
+                    .add(group);
+
+            chart.renderer.text('>', chart.chartWidth - 60, labelY + 1)
+                    .css({
+                        "color": "#FFFFFF", opacity: 0.25,
+                        fontSize: '22px'
+                    })
+                    .add(group);
+
+//            $('.highcharts-grid path:last').remove();
+            $('.highcharts-grid path').last().remove();
+            $('.highcharts-grid path').first().remove();
+
+
+        });
+
+        var $topLoader = $("#topLoader").percentageLoader({
+            width: 120, height: 120, controllable: false, progress: 0, onProgressUpdate: function (val) {
+            }
+        });
+
+        var current = 100;
+        var total = 100;
+        var string = "还差<br/><span style=\"font-weight: bold;font-size: 18px;\">" + 1000 + "</span><br/>步";
+        if (current >= 100) {
+            string = "<a href='javascript:awardBtnClick()'><span style=\"font-size: 16px;\">领取<br/>奖励</span><br/></a>";
+        }
+//        静态设置进度
+        $topLoader.percentageLoader({progress: current / total, progressStr: string});
+//        动态设置进度
+        var animateIndex = 0;
+        var animateFunc = function () {
+            animateIndex += 1;
+            $topLoader.percentageLoader({
+                width: 120,
+                height: 120, progress: animateIndex / total
+            });
+            if (animateIndex < current) {
+                setTimeout(animateFunc, 1);
+            }
+        };
+        setTimeout(animateFunc, 1);
+
+
+    });
+    /**
+     * 领取奖励
+     */
+    function awardBtnClick() {
+        $("#topLoader").animate({
+            opacity: 0.4
+        }, 200, function () {
+            $("#topLoader").css({opacity: 1});
+            document.location.href = 'http://www.baidu.com';
+        });
+    }
+
+</script>
+]]#
+</html>
