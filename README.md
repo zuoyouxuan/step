@@ -1,3 +1,19 @@
+#2016-04-07 15：30
+修改曲线宽度；修改圆点半径
+```js
+series: [{
+    name: '',
+    showInLegend: false,
+    color: '#FFFFFF',
+    lineWidth:1,
+    data: [25315, 0, 0, 0, 9150, 8171, 29824],
+    marker : {
+        enabled : true,
+        radius : 3
+    }
+}]
+```
+
 #2016-04-07 13：30
 修改chart margin 解决线图右边距过大的问题
 ```js
