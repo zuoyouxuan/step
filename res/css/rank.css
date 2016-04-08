@@ -34,6 +34,7 @@ ul, li {
     position: relative;
     background-color: #edeae3;
     border:none !important;
+    padding:0px;
 }
 
 .caption {
@@ -47,16 +48,27 @@ ul, li {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     top:20%\9;
-  }
+}
 
 .circle {
 
 }
 #circleBox h2 , #circleBox h1 {
   font-weight: bold;
+  font-family: ArialNarrow;
 }
+
+#circleBox h1 {
+  font-size: 38px;
+}
+
+#circleBox h1>small {
+  font-size: 55%;
+  margin-left: 3px;
+}
+
 #circleBox h1 , #circleBox h1 small, #circleBox h2 , #circleBox h2 small, #circleBox h4 {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 
 #inviteBtn {
@@ -92,14 +104,15 @@ ul, li {
 }
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
   border-top: none !important;
-    border-bottom: none !important;
-          }
+  border-bottom: none !important;
+  padding: 4px;
+}
 .table-striped>tbody>tr:nth-of-type(even) {
-  background-color: #f8f8f8;
+  background-color: #f2f2f2;
 }
 
 .table-striped>tbody>tr:nth-of-type(odd) {
-  background-color: #f2f2f2;
+  background-color: #f8f8f8;
 }
 
 .table>tbody>tr>td:first-child {
@@ -110,8 +123,8 @@ ul, li {
 .table>tbody>tr>td:last-child {
   color: #a09f9d;
   text-align:right;
-  font-size: 30px;
-  padding-right: 16px;
+  font-size: 32px;
+  padding-right: 32px;
 }
 .footer {
   background-color: #edeae3;
@@ -130,18 +143,15 @@ ul, li {
     position: absolute;
     z-index: 99999;
 }
+.table h4 {
+  font-family: "Microsoft YaHei";
+  color: #7a7a7a;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
 
-
-@media screen and (max-width: 320px ) {
-  .table h4 {
-    font-size:18px;
-  }
-  h5 {
-    font-size:14px;
-  }
-  .btn-lg, .btn-group-lg>.btn {
-    font-size:18px;
-  }
+.table h4>small {
+  font-size: 70%;
 }
 
 @media screen and (max-width: 320px ) {
@@ -153,5 +163,18 @@ ul, li {
   }
   .btn-lg, .btn-group-lg>.btn {
     font-size:14px;
+  }
+}
+
+@media screen and (min-width: 320px ) {
+
+  .table h4 {
+    font-size:20px;
+  }
+  h5 {
+    font-size:14px;
+  }
+  .btn-lg, .btn-group-lg>.btn {
+    font-size:18px;
   }
 }
