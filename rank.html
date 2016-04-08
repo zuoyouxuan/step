@@ -5,9 +5,26 @@
     <title>排行榜</title>
     <meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="res/js/bootstrap/css/bootstrap.min.css">
+    <script src="res/js/iscroll-lite.js"></script>
     <link rel="stylesheet" href="res/css/rank.css">
-
+    <script type="text/javascript">
+        var myScroll;
+        function loaded() {
+            myScroll = new iScroll(document.getElementById('main'), {scrollbars: false , scrollToTop:true});
+        }
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+        }, false);
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(loaded, 200);
+        }, false);
+        document.addEventListener('DOMContentLoaded', loaded, false);
+        window.addEventListener('load', setTimeout(function () {
+            loaded();
+        }, 200), false);
+    </script>
 </head>
+<body onload="loaded()">
 <body >
 <div class="container  user-info navbar-fixed-top">
   <div class="row" id="circleBox">
@@ -45,7 +62,7 @@
 </body>
 <script src="res/js/jquery.min.js"></script>
 <script src="res/js/bootstrap/js/bootstrap.min.js"></script>
-<script src="res/js/rank.min.js"></script>
+<script src="res/js/rank.js"></script>
 
 
 <script>

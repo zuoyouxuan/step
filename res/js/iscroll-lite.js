@@ -64,6 +64,7 @@
 			that.options = {
 				hScroll: true,
 				vScroll: true,
+				scrollToTop:false,
 				x: 0,
 				y: 0,
 				bounce: true,
@@ -240,7 +241,7 @@
 			that.absDistX = m.abs(that.distX);
 			that.absDistY = m.abs(that.distY);
 
-			if (that.distY <= 0) {
+			if (that.options.scrollToTop == false && that.distY <= 0) {
 				return;
 			}
 

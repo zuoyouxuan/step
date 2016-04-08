@@ -1,3 +1,9 @@
+##修改上下间距，解决第5行排名显示不全的问题
+.user-info {
+  background-color: #edeae3;
+  padding-bottom: 12px;
+  padding-top: 16px;
+}
 #2016-04-07 23:25
 提交排行榜页面
 #2016-04-07 17:00

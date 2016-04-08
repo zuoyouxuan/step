@@ -1,6 +1,7 @@
 $(function () {
   $(window).on('resize load', function() {
-      $('#main').css({"padding-top": $(".navbar-fixed-top").height() + 32 + "px"});
+      $('#main , #wrapper').css({"padding-top": $(".navbar-fixed-top").height() + 32 + "px"});
+
   });
   for(var i = 0;i<99;i++) {
     var newRow = $('.table>tbody>tr:first').clone();
@@ -48,6 +49,6 @@ function showTooltip() {
             height = height * (width / srcWith);
         }
         $('#topTooltip img').css({'width': width + 'px', 'height': height + 'px'});
-        $('#topTooltip').css({'left': '50%', 'margin-left': -(parseInt(width / 2)) + 'px','z-index':99999}).slideDown();
+        $('#topTooltip').css({'left': '50%', 'margin-left': -(parseInt(width / 2)) + 'px','z-index':99999}).fadeIn();
     }
 }
