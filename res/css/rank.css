@@ -26,6 +26,13 @@ ul, li {
 }
 
 .user-info {
+  z-index: 0;
+}
+#main{
+  z-index:99999;
+}
+
+.user-info {
   background-color: #edeae3;
   padding-bottom: 12px;
   padding-top: 16px;
@@ -85,6 +92,7 @@ ul, li {
 body {
   overflow: hidden;
 }
+
 #wrapper {
 	position: absolute;
 	z-index: 1;

@@ -1,3 +1,13 @@
+##2016-04-08 17:25
+#####表格滑动遮罩，头部
+```css
+.user-info {
+  z-index: 0;
+}
+#main{
+  z-index:99999;
+}
+```
 #2016-04-08 14:00
 ###涉及修改文件 rank.html , rank.css , iScroll.js , info.png
 #####隐藏进度条
