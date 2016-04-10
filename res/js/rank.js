@@ -3,7 +3,7 @@ $(function () {
       $('#main , #wrapper').css({"padding-top": $(".navbar-fixed-top").height() + 32 + "px"});
 
   });
-  for(var i = 0;i<99;i++) {
+  for(var i = 0;i<5;i++) {
     var newRow = $('.table>tbody>tr:first').clone();
     newRow.find('td:last').text(i + 2);
     $('.table>tbody').append(newRow);
