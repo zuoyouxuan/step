@@ -10,7 +10,7 @@
     <script type="text/javascript">
         var myScroll;
         function loaded() {
-            myScroll = new IScroll('#main', {scrollbars: false , scrollToTop:true});
+            myScroll = new IScroll('#main', {scrollbars: false  , scrollToTop:true , useTransform:true});
         }
         document.addEventListener('touchmove', function (e) {
             e.preventDefault();

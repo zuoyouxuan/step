@@ -5,7 +5,7 @@
     <title>HTML5</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="res/js/iscroll-lite.min.js"></script>
+    <script src="res/js/iscroll-lite.js"></script>
     <link rel="stylesheet" href="res/js/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="res/css/style.css">
     <script src="res/js/highcharts.min.js"></script>
@@ -17,14 +17,11 @@
             background-size: cover;
             -o-background-size: cover;
         }
-
-
-
     </style>
     <script type="text/javascript">
         var myScroll;
         function loaded() {
-          myScroll = new IScroll('#main', {scrollbars: false});
+          myScroll = new IScroll('#main' , {freeScroll:true,scrollY:true,scrollX:false});
         }
         document.addEventListener('touchmove', function (e) {
             e.preventDefault();
@@ -72,7 +69,6 @@
 <script src="res/js/bootstrap/js/bootstrap.min.js"></script>
 <script src="res/js/jquery.progress.min.js"></script>
 
-#[[
 <script>
 
     var targetStep = 10000;//目标步数
@@ -99,7 +95,11 @@
             },
             chart: {
                 marginRight:20,
-                spacingRight: -5,
+                spacingLeft:0,
+                spacingRight:0,
+
+                // marginLeft:4,
+                // spacingRight: -15,
                 borderRadius: 10,
                 renderTo: 'chartContainer',
                 spacingBottom: 70,
@@ -134,14 +134,14 @@
             },
             plotOptions: {
                 series: {
-                    fillOpacity: 0.1
+                    fillOpacity: 0.1,
                 }
             },
             yAxis: {
                 min: 1000,
-                offset: -15,
                 title: null,
                 opposite: true,
+                tickLength:0,
                 showFirstLabel: false,
                 showLastLabel: false,
                 gridLineDashStyle: 'Dot',
@@ -154,7 +154,10 @@
                         }
                         return this.value / 10000 + 'W';
                     },
-                    style: {"color": "#FFFFFF", "font-size": "10px", opacity: 0.65}
+                    align: 'left',
+                    x:0,
+                    y: 4,
+                    style: {"color": "#FFFFFF" , "font-size": "10px", opacity: 0.65}
                 },
                 tickPositioner: function (min , max) {
                     var positions = [];
@@ -215,6 +218,7 @@
             chart.renderer.label('<img src="res/image/avatar.jpg"/>', 10, labelY - 60 / 2, null, null, null, true)
                     .add(group);
 
+
             chart.renderer.text('夺得04月01日排行榜冠军', 60, labelY)
                     .css({
                         "color": "#FFFFFF", opacity: 0.65,
@@ -222,12 +226,14 @@
                     })
                     .add(group);
 
-            chart.renderer.text('>', chart.chartWidth - 60, labelY + 1)
-                    .css({
-                        "color": "#FFFFFF", opacity: 0.25,
-                        fontSize: '22px'
-                    })
-                    .add(group);
+            chart.renderer.image('res/image/back-icon--3.png', chart.chartWidth - 60, labelY - 14, 10,16).css({"opacity":0.65}).add(group);
+            //
+            // chart.renderer.text('>', chart.chartWidth - 60, labelY + 1)
+            //         .css({
+            //             "color": "#FFFFFF", opacity: 0.25,
+            //             fontSize: '22px'
+            //         })
+            //         .add(group);
 
 //            $('.highcharts-grid path:last').remove();
             $('.highcharts-grid path').last().remove();
@@ -243,7 +249,7 @@
 
         var current = 100;
         var total = 100;
-        var string = "还差<br/><span style=\"font-weight: bold;font-size: 18px;\">" + 1000 + "</span><br/>步";
+        var string = "还差<br/><span style=\"font-weight: bold;font-size: 17px;\">" + 1000 + "</span><br/>步";
         if (current >= 100) {
             string = "<a href='javascript:awardBtnClick()'><span style=\"font-size: 16px;\">领取<br/>奖励</span><br/></a>";
         }
@@ -278,5 +284,5 @@
     }
 
 </script>
-]]#
+
 </html>

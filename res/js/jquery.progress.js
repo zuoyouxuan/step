@@ -290,7 +290,7 @@
             (function () {
                 var fontSize, string, smallSize, heightRemaining;
                 fontSize = 12;
-
+                // percentageText.style.line-height = "20px";
                 percentageText.style.top = ((settings.height / 2) - 26).toString() + 'px';
                 percentageText.style.color = '#73c6c8';
                 percentageText.style.font = fontSize.toString() + 'px BebasNeueRegular';

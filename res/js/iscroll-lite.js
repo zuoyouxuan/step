@@ -462,8 +462,6 @@ IScroll.prototype = {
 		absDistX		= Math.abs(this.distX);
 		absDistY		= Math.abs(this.distY);
 
-
-
 		if (this.options.scrollToTop == false && this.distY <= 0) {
 			return;
 		}
@@ -528,6 +526,7 @@ IScroll.prototype = {
 		}
 
 		this.moved = true;
+
 
 		this._translate(newX, newY);
 

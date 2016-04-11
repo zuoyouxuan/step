@@ -1,9 +1,9 @@
 $(function () {
   $(window).on('resize load', function() {
-      $('#main , #wrapper').css({"padding-top": $(".navbar-fixed-top").height() + 32 + "px"});
+      $('#main , #wrapper').css({"top": $(".navbar-fixed-top").height() + 32 + "px" , position: "absolute"});
 
   });
-  for(var i = 0;i<5;i++) {
+  for(var i = 0;i<1;i++) {
     var newRow = $('.table>tbody>tr:first').clone();
     newRow.find('td:last').text(i + 2);
     $('.table>tbody').append(newRow);
@@ -45,7 +45,7 @@ function showTooltip() {
         height = height.replace('px', '');
         var srcWith = width;
         if ($(window).width() < width) {
-            width = $(window).width() - 20;
+            width = $(window).width() - 32;
             height = height * (width / srcWith);
         }
         $('#topTooltip img').css({'width': width + 'px', 'height': height + 'px'});
