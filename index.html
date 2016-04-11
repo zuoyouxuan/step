@@ -19,11 +19,12 @@
         }
 
 
+
     </style>
     <script type="text/javascript">
         var myScroll;
         function loaded() {
-            myScroll = new iScroll(document.getElementById('main'), {scrollbars: false});
+          myScroll = new IScroll('#main', {scrollbars: false});
         }
         document.addEventListener('touchmove', function (e) {
             e.preventDefault();

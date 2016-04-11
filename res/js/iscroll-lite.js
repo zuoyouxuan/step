@@ -462,9 +462,12 @@ IScroll.prototype = {
 		absDistX		= Math.abs(this.distX);
 		absDistY		= Math.abs(this.distY);
 
+
+
 		if (this.options.scrollToTop == false && this.distY <= 0) {
 			return;
 		}
+
 
 		// We need to move at least 10 pixels for the scrolling to initiate
 		if ( timestamp - this.endTime > 300 && (absDistX < 10 && absDistY < 10) ) {
@@ -512,6 +515,7 @@ IScroll.prototype = {
 		if ( newX > 0 || newX < this.maxScrollX ) {
 			newX = this.options.bounce ? this.x + deltaX / 3 : newX > 0 ? 0 : this.maxScrollX;
 		}
+
 		if ( newY > 0 || newY < this.maxScrollY ) {
 			newY = this.options.bounce ? this.y + deltaY / 3 : newY > 0 ? 0 : this.maxScrollY;
 		}

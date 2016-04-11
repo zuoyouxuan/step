@@ -33,6 +33,14 @@ html, body {
     background: #EFEFEF;
 }
 
+
+#main {
+  left: 0;
+  width: 100%;
+  background: transparent;
+  padding-top: 40%;
+}
+
 .mainContent {
     min-width: 100%;
     width: 100%;
@@ -40,8 +48,7 @@ html, body {
     min-height: 70%;
     height: 70%;
     max-height: 70%;
-    position: relative;
-    top: 30%;
+
     bottom: 0;
     left: 0;
     right: 0;
