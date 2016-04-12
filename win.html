@@ -131,7 +131,7 @@
     <script type="text/javascript">
         var myScroll;
         function loaded() {
-            myScroll = new IScroll('#main', {scrollbars: false , scrollY:true , scrollToTop:false});
+            myScroll = new IScroll('#main', {maxScrollOffsetY:60,scrollbars: false , scrollY:true , scrollToTop:true});
         }
         document.addEventListener('touchmove', function (e) {
             e.preventDefault();
@@ -154,7 +154,7 @@
                 <img class="avatar  text-center" src="res/image/avatar.jpg"/>
             </div>
         </div>
-        <div class="standard-space container" style="padding-left: 5px;padding-right: 5px">
+        <div class="standard-space container" style="padding-left: 5px;padding-right: 5px;">
             <div class="col-xs-12" style="min-height:200px;padding-right: 5px;padding-left: 5px">
                   <div class="panel panel-default">
                     <div class="panel-body">

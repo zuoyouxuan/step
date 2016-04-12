@@ -287,6 +287,7 @@ function IScroll (el, options) {
 		scrollToTop:false,
 		directionLockThreshold: 5,
 		momentum: true,
+		maxScrollOffsetY:0,
 
 		bounce: true,
 		bounceTime: 600,
@@ -674,7 +675,7 @@ IScroll.prototype = {
 		this.scrollerHeight	= this.scroller.offsetHeight;
 
 		this.maxScrollX		= this.wrapperWidth - this.scrollerWidth;
-		this.maxScrollY		= this.wrapperHeight - this.scrollerHeight;
+		this.maxScrollY		= this.wrapperHeight - this.scrollerHeight + this.options.maxScrollOffsetY;
 
 /* REPLACE END: refresh */
 
