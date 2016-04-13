@@ -23,34 +23,13 @@
           background: transparent;
           padding-top: 40%;
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> origin/master
         #scroller{
           height: 100%;
         }
     </style>
-    <script type="text/javascript">
-        var myScroll;
-        function loaded() {
-          myScroll = new IScroll('#main' , {freeScroll:false,scrollY:true,scrollX:false,scrollToTop:false});
-          document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-        }
-        // document.addEventListener('touchmove', function (e) {
-        //     e.preventDefault();
-        // }, false);
-        // document.addEventListener('DOMContentLoaded', function () {
-        //     setTimeout(loaded, 200);
-        // }, false);
-        // document.addEventListener('DOMContentLoaded', loaded, false);
-        // window.addEventListener('load', setTimeout(function () {
-        //     loaded();
-        // }, 200), false);
-    </script>
 </head>
-<body class="full" onload="loaded()">
+<body class="full">
 <div id="main" class="text-center">
     <div class="container" id="scroller">
         <div class="row" style="margin-top:-40px">
@@ -85,6 +64,14 @@
 <script src="res/js/jquery.progress.js"></script>
 
 <script>
+
+    var myScroll;
+    function loaded() {
+        myScroll = new IScroll('#main', {scrollbars: false  , scrollToTop:true});
+    }
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+    }, false);
 
     var targetStep = 10000;//目标步数
 
@@ -283,6 +270,10 @@
             }
         };
         setTimeout(animateFunc, 1);
+
+        $(window).on('resize load', function() {
+            loaded();
+        });
 
 
     });
