@@ -287,6 +287,7 @@ function IScroll (el, options) {
 		scrollToTop:false,
 		directionLockThreshold: 5,
 		momentum: true,
+		maxScrollOffsetY:0,
 
 		bounce: true,
 		bounceTime: 600,
@@ -668,13 +669,19 @@ IScroll.prototype = {
 		this.wrapperWidth	= this.wrapper.clientWidth;
 		this.wrapperHeight	= this.wrapper.clientHeight;
 
+		// var p = this.wrapper;
+		// var style = p.currentStyle || window.getComputedStyle(p);
+		//
+		// alert("Current marginTop: " + (this.scroller.offsetHeight));
+		// this.options.maxScrollOffsetY = (this.scroller.clientHeight - rf);
+
 /* REPLACE START: refresh */
 
 		this.scrollerWidth	= this.scroller.offsetWidth;
 		this.scrollerHeight	= this.scroller.offsetHeight;
 
 		this.maxScrollX		= this.wrapperWidth - this.scrollerWidth;
-		this.maxScrollY		= this.wrapperHeight - this.scrollerHeight;
+		this.maxScrollY		= this.wrapperHeight - this.scrollerHeight + this.options.maxScrollOffsetY;
 
 /* REPLACE END: refresh */
 
