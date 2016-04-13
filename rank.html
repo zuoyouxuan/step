@@ -7,27 +7,12 @@
     <link rel="stylesheet" href="res/js/bootstrap/css/bootstrap.min.css">
     <script src="res/js/iscroll-lite.js"></script>
     <link rel="stylesheet" href="res/css/rank.css">
-    <script type="text/javascript">
-        var myScroll;
-        function loaded() {
-            myScroll = new IScroll('#main', {scrollbars: false  , scrollToTop:true});
-        }
-        document.addEventListener('touchmove', function (e) {
-            e.preventDefault();
-        }, false);
-        document.addEventListener('DOMContentLoaded', function () {
-            setTimeout(loaded, 200);
-        }, false);
-        document.addEventListener('DOMContentLoaded', loaded, false);
-        window.addEventListener('load', setTimeout(function () {
-            loaded();
-        }, 200), false);
-    </script>
+
     <style>
 
     </style>
 </head>
-<body onload="loaded()">
+<body>
 <body >
 <div class="container  user-info navbar-fixed-top">
   <div class="row" id="circleBox">
@@ -67,11 +52,19 @@
 <script src="res/js/bootstrap/js/bootstrap.min.js"></script>
 <script src="res/js/rank.js"></script>
 
+<script type="text/javascript">
+    var myScroll;
 
-<script>
-
-
-
+    $(function () {
+      $(window).on('resize load', function() {
+          loaded();
+      });
+    });
+    function loaded() {
+        myScroll = new IScroll('#main', {scrollbars: false  , scrollToTop:true});
+    }
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+    }, false);
 </script>
-
 </html>
