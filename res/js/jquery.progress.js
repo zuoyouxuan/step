@@ -263,8 +263,9 @@
             ////ctx.fillStyle = tubeGrad;
             //ctx.putImageData(imd, 0, 0);
             ////
-            ctx.drawImage(gradient, 0, 0, canvas.width, canvas.height);
+            ctx.imageSmoothingEnabled = true;
 
+            ctx.drawImage(gradient, 0, 0, canvas.width, canvas.height);
 
             //var circ = Math.PI * 2;
             //var quart = Math.PI / 2;

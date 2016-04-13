@@ -17,26 +17,37 @@
             background-size: cover;
             -o-background-size: cover;
         }
+
+        #main {
+          width: 100%;
+          background: transparent;
+          padding-top: 40%;
+        }
+
+        #scroller{
+          height: 100%;
+        }
     </style>
     <script type="text/javascript">
         var myScroll;
         function loaded() {
-          myScroll = new IScroll('#main' , {freeScroll:true,scrollY:true,scrollX:false});
+          myScroll = new IScroll('#main' , {freeScroll:false,scrollY:true,scrollX:false,scrollToTop:false});
+          document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
         }
-        document.addEventListener('touchmove', function (e) {
-            e.preventDefault();
-        }, false);
-        document.addEventListener('DOMContentLoaded', function () {
-            setTimeout(loaded, 200);
-        }, false);
-        document.addEventListener('DOMContentLoaded', loaded, false);
-        window.addEventListener('load', setTimeout(function () {
-            loaded();
-        }, 200), false);
+        // document.addEventListener('touchmove', function (e) {
+        //     e.preventDefault();
+        // }, false);
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     setTimeout(loaded, 200);
+        // }, false);
+        // document.addEventListener('DOMContentLoaded', loaded, false);
+        // window.addEventListener('load', setTimeout(function () {
+        //     loaded();
+        // }, 200), false);
     </script>
 </head>
 <body class="full" onload="loaded()">
-<div id="main" class="mainContent text-center">
+<div id="main" class="text-center">
     <div class="container" id="scroller">
         <div class="row" style="margin-top:-40px">
             <div class="col-xs-12">
@@ -67,7 +78,7 @@
 </body>
 <script src="res/js/jquery.min.js"></script>
 <script src="res/js/bootstrap/js/bootstrap.min.js"></script>
-<script src="res/js/jquery.progress.min.js"></script>
+<script src="res/js/jquery.progress.js"></script>
 
 <script>
 

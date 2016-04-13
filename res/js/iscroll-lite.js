@@ -287,6 +287,7 @@ function IScroll (el, options) {
 		scrollToTop:false,
 		directionLockThreshold: 5,
 		momentum: true,
+		maxScrollOffsetY:0,
 
 		bounce: true,
 		bounceTime: 600,
@@ -414,6 +415,9 @@ IScroll.prototype = {
 		this.directionX = 0;
 		this.directionY = 0;
 		this.directionLocked = 0;
+		this.upOrDownLocked = '';
+		this.lastMoveDistY = 0;
+
 
 		this.startTime = utils.getTime();
 
@@ -482,6 +486,23 @@ IScroll.prototype = {
 				this.directionLocked = 'n';		// no lock
 			}
 		}
+
+		if( this.directionLocked == 'v'  ) {
+			if(this.upOrDownLocked != undefined && this.upOrDownLocked != null) {
+				if ( (this.upOrDownLocked == 'down' &&  this.lastMoveDistY - this.distY > 0) || ( this.upOrDownLocked == 'up' &&  this.lastMoveDistY - this.distY < 0)) {
+						this.initiated = false;
+						this.moved = true;
+						if (this.resetPosition(0) ) {
+							return;
+						}
+						return;
+				}
+			}
+
+			this.upOrDownLocked = this.lastMoveDistY - this.distY > 0 ? "up":"down";
+			this.lastMoveDistY = this.distY;
+		}
+
 
 		if ( this.directionLocked == 'h' ) {
 			if ( this.options.eventPassthrough == 'vertical' ) {
@@ -668,13 +689,19 @@ IScroll.prototype = {
 		this.wrapperWidth	= this.wrapper.clientWidth;
 		this.wrapperHeight	= this.wrapper.clientHeight;
 
+		// var p = this.wrapper;
+		// var style = p.currentStyle || window.getComputedStyle(p);
+		//
+		// alert("Current marginTop: " + (this.scroller.offsetHeight));
+		// this.options.maxScrollOffsetY = (this.scroller.clientHeight - rf);
+
 /* REPLACE START: refresh */
 
 		this.scrollerWidth	= this.scroller.offsetWidth;
 		this.scrollerHeight	= this.scroller.offsetHeight;
 
 		this.maxScrollX		= this.wrapperWidth - this.scrollerWidth;
-		this.maxScrollY		= this.wrapperHeight - this.scrollerHeight;
+		this.maxScrollY		= this.wrapperHeight - this.scrollerHeight + this.options.maxScrollOffsetY;
 
 /* REPLACE END: refresh */
 
