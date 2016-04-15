@@ -255,7 +255,6 @@ var utils = (function () {
 	me.click = function (e) {
 		var target = e.target,
 			ev;
-
 		if ( !(/(SELECT|INPUT|TEXTAREA)/i).test(target.tagName) ) {
 			ev = document.createEvent('MouseEvents');
 			ev.initMouseEvent('click', true, true, e.view, 1,
@@ -401,6 +400,7 @@ IScroll.prototype = {
 			return;
 		}
 
+
 		if ( this.options.preventDefault && !utils.isBadAndroid && !utils.preventDefaultException(e.target, this.options.preventDefaultException) ) {
 			e.preventDefault();
 		}
@@ -439,6 +439,7 @@ IScroll.prototype = {
 		this.pointX    = point.pageX;
 		this.pointY    = point.pageY;
 
+
 		this._execEvent('beforeScrollStart');
 	},
 
@@ -466,7 +467,7 @@ IScroll.prototype = {
 		absDistX		= Math.abs(this.distX);
 		absDistY		= Math.abs(this.distY);
 
-		if (this.options.scrollToTop == false && this.distY <= 0) {
+		if (this.options.scrollToTop == false && this.distY < 0) {
 			return;
 		}
 

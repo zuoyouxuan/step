@@ -19,14 +19,40 @@
         }
 
         #main {
-          width: 100%;
+
+          top: 0 !important;
+        	left: 0;
+        	width: 100%;
           background: transparent;
           padding-top: 40%;
+
         }
 
-        #scroller{
-          height: 100%;
+
+        #scroller {
+        	z-index: 1;
+        	-webkit-tap-highlight-color: rgba(0,0,0,0);
+        	width: 100%;
+        	-webkit-transform: translateZ(0);
+        	-moz-transform: translateZ(0);
+        	-ms-transform: translateZ(0);
+        	-o-transform: translateZ(0);
+        	transform: translateZ(0);
+        	-webkit-touch-callout: none;
+        	-webkit-user-select: none;
+        	-moz-user-select: none;
+        	-ms-user-select: none;
+        	user-select: none;
+        	-webkit-text-size-adjust: none;
+        	-moz-text-size-adjust: none;
+        	-ms-text-size-adjust: none;
+        	-o-text-size-adjust: none;
+        	text-size-adjust: none;
         }
+
+        /*#scroller{
+          height: 100%;
+        }*/
     </style>
 </head>
 <body class="full">
@@ -76,6 +102,8 @@
     var targetStep = 10000;//目标步数
 
     $(function () {
+
+
 
         var curHeight = $(window).height();
         var chartHeight = 200;
@@ -272,7 +300,14 @@
         setTimeout(animateFunc, 1);
 
         $(window).on('resize load', function() {
+            var height = $('#scroller').height();
+            if(height < ($(window).height() - $('#scroller').offset().top)) {
+              height = $(window).height() - $('#scroller').offset().top;
+            }
+            $('#scroller').css({"height": height + 66});
+
             loaded();
+
         });
 
 

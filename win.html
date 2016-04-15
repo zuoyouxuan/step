@@ -138,6 +138,10 @@
       	text-size-adjust: none;
       }
 
+      .clickable {
+          cursor: pointer;
+      }
+
     </style>
 
 </head>
@@ -152,9 +156,10 @@
         </div>
         <div class="standard-space container"  style="padding-left: 5px;padding-right: 5px;">
             <div class="col-xs-12" id="panelList" style="padding-right: 5px;padding-left: 5px">
-                  <div class="panel panel-default">
+                  <div class="panel panel-default panel-toggle" id = "1">
                     <div class="panel-body">
-                      <div class="coupon-container">
+                      <a href="http://www.baidu.com">
+                      <div class="coupon-container clickable">
                         <div class="coupon-thumb"><img src="res/image/avatar.jpg" /></div>
                         <div class="coupon-content clearfix">
                             <div class="pull-left">
@@ -169,7 +174,7 @@
                           <hr class="hr hr-dotted"/>
                           <div class="date-txt text-left">2016-04-10</div>
                       </div>
-                    </div>
+                    </div></a>
                   </div>
                 </div>
         </div>
@@ -184,10 +189,21 @@
 <script>
 
     $(function () {
-      for(var i = 0; i < 5; i++) {
+      for(var i = 1; i < 5; i++) {
         var newRow = $('#panelList>.panel:first').clone();
+        newRow.attr('id' , i + 1);
         $('#panelList').append(newRow);
       }
+
+      $(".panel").click(function(e){
+          alert('planel:' + $(this).attr('id'));
+      });
+
+      // $( document ).on( "tap", ".panel", function( e ) {
+      //     // e.preventDefault();
+      //     alert('planel:' + $(this).attr('id'));
+      // });
+
 
       $(window).on('resize load', function() {
           var height = $('#panelList').height();
@@ -195,9 +211,7 @@
             height = $(window).height() - $('#scroller').offset().top;
           }
           $('#scroller').css({"height": height + 66});
-
           loaded();
-
       });
 
 
@@ -219,7 +233,7 @@
       if(y <= 480) {
         offset -= 16;
       }
-      myScroll = new IScroll('#main', {scrollbars: false , scrollY:true , scrollToTop:true , maxScrollOffsetY:offset});
+      myScroll = new IScroll('#main', {scrollbars: false , click:true,tap:true , scrollY:true , scrollToTop:true , maxScrollOffsetY:offset});
     }
     document.addEventListener('touchmove', function (e) {
         e.preventDefault();
